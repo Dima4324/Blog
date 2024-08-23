@@ -21,7 +21,7 @@ const StyledLink = styled(Link)`
 
 const StyledButton = styled.button`
 	border: none;
-	background-color: inheri;
+	background-color: inherit;
 	&:hover {
 		cursor: pointer;
 	}
