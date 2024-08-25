@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { Header, Footer } from "./components";
 import { Routes, Route } from "react-router-dom";
-import { Authorization } from "./pages";
+import { Authorization, Registration } from "./pages";
 
 const AppColumn = styled.div`
 	display: flex;
@@ -26,7 +26,7 @@ export const Blog = () => {
         <Routes>
           <Route path="/" element={<div>Главная</div>}></Route>
           <Route path="/login" element={<Authorization/>}></Route>
-          <Route path="/register" element={<div>Регистрации</div>}></Route>
+          <Route path="/register" element={<Registration/>}></Route>
           <Route path="/users" element={<div>Пользователи</div>}></Route>
           <Route path="/post" element={<div>Новая статья</div>}></Route>
           <Route path="/post/:postId" element={<div>Статья</div>}></Route>

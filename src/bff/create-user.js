@@ -12,4 +12,4 @@ export const createUser = (login, password) =>
 			registered_at: currentDate,
 			role_id: 2,
 		}),
-	})
+	}).then(createdUser => createdUser.json())

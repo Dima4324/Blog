@@ -10,8 +10,6 @@ const reducer = combineReducers({
 	posts: postsReducer,
 })
 
-console.log(reducer)
-
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
 export const store = createStore(reducer, composeEnhancers(applyMiddleware(thunk)));
