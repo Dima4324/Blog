@@ -1,42 +1,47 @@
 import { useEffect, useState } from "react";
 import styled from "styled-components";
 
-export const FooterContainer = ({ className }) => {
-  const [city, setCity] = useState("");
-  const [temperature, setTemperature] = useState("");
-  const [weather, setWeather] = useState("");
+const FooterContainer = ({ className }) => {
+  const [weatherWidjet, setWeatherWidjet] = useState({
+    city: "",
+    temperature: "",
+    weather: "",
+  });
 
   useEffect(() => {
     fetch(
-      "https://api.openweathermap.org/data/2.5/weather?q=Moscow&units=metric&lang=ru&appid=6e009acde0e3b39fb828629d5158ef23"
+      "https://api.openweathermap.org/data/2.5/weather?q=Moscow&units=metric&lang=ru&appid=9a7522b2fc5e64b48c552132a50aed2e"
     )
       .then((res) => res.json())
       .then(({ name, main, weather }) => {
-        setCity(name);
-        setTemperature(Math.round(main.temp));
-        setWeather(weather[0].description);
+        setWeatherWidjet({
+          ...weatherWidjet,
+          city: name,
+          temperature: Math.round(main.temp),
+          weather: weather[0].description,
+        });
       });
   }, []);
 
   return (
-    <div className={className}>
+    <footer className={className}>
       <div>
-        <div>Блог веб-разработчика</div>
-        <div>weeeb@gmail.com</div>
+        <p>Блог веб-разработчика</p>
+        <p>weeeb@gmail.com</p>
       </div>
       <div>
-        <div>
-          {city},{" "}
+        <p>
+          {weatherWidjet.city},{" "}
           {new Date().toLocaleDateString("ru", {
             day: "numeric",
             month: "long",
           })}
-        </div>
-        <div>
-          {temperature} градусов, {weather}
-        </div>
+        </p>
+        <p>
+          {weatherWidjet.temperature}°C, {weatherWidjet.weather}
+        </p>
       </div>
-    </div>
+    </footer>
   );
 };
 

@@ -2,15 +2,17 @@ import styled from "styled-components";
 import { Link } from "react-router-dom";
 import { Icon } from "../../../../components";
 
-const LargeText = styled.div`
+const LargeText = styled.p`
   font-size: 48px;
   font-weight: 600;
   line-height: 48px;
+  margin: 0;
 `;
 
-const SmallTest = styled.div`
+const SmallTest = styled.p`
   font-size: 18px;
   font-weight: bold;
+  margin: 0;
 `;
 
 const LogoContainer = ({ className }) => (
