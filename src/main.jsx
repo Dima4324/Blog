@@ -9,9 +9,9 @@ import { Blog } from "./Blog.jsx";
 createRoot(document.getElementById("root")).render(
   <BrowserRouter>
     <Provider store={store}>
-      <StrictMode>
+      {/* <StrictMode> */}
         <Blog />
-      </StrictMode>
+      {/* </StrictMode> */}
     </Provider>
   </BrowserRouter>
 );

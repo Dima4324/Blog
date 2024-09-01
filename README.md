@@ -17,6 +17,7 @@
 
 Определить схему для Redux Store.
 user: id login roleId
-posts: массив post: id title imageUrl publishedAt commentsCount post: id title imageUrl content publishedAt
+posts: массив post: id title imageUrl publishedAt commentsCount
+post: id title imageUrl content publishedAt
 comments: массив comment: id author content publishedAt
 users: массив user: id login registeredAt role

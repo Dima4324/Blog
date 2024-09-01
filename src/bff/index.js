@@ -1,2 +1,3 @@
-export * from "./current-date"
-export { server } from "./server"
+import * as server from "./operations"
+
+export { server };

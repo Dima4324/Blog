@@ -5,31 +5,38 @@
       "login": "Dima",
       "password": "qwerty123",
       "registered_at": "2050-09-22 03:12",
-      "role_id": "0"
+      "role_id": 0
     },
     {
-      "id": "e4b6",
-      "login": "Dimasik",
-      "password": "123456",
-      "registered_at": "2024-08-25 22:10",
-      "role_id": 2
+      "id": "00101",
+      "login": "Dima",
+      "password": "qwerty123",
+      "registered_at": "2050-09-22 03:12",
+      "role_id": 0
+    },
+    {
+      "id": "0091",
+      "login": "Dima",
+      "password": "qwerty123",
+      "registered_at": "2050-09-22 03:12",
+      "role_id": 0
     }
   ],
   "roles": [
     {
-      "id": "0",
+      "id": 0,
       "name": "Администратор"
     },
     {
-      "id": "1",
+      "id": 1,
       "name": "Модератор"
     },
     {
-      "id": "2",
+      "id": 2,
       "name": "Читатель"
     },
     {
-      "id": "3",
+      "id": 3,
       "name": "Гость"
     }
   ],
@@ -98,5 +105,26 @@
       "published_at": "2013-09-13 10:12"
     }
   ],
-  "comments": []
+  "comments": [
+    {
+      "id": "dece",
+      "author_id": "001",
+      "post_id": "001",
+      "published_at": "2024-09-01 23:26",
+      "content": "fwefwef"
+    }
+  ],
+  "sessions": [
+    {
+      "id": "b127",
+      "hash": "0.87221172885498288174233039171667769551277160644531",
+      "user": {
+        "id": "001",
+        "login": "Dima",
+        "password": "qwerty123",
+        "registeredAt": "2050-09-22 03:12",
+        "roleId": 0
+      }
+    }
+  ]
 }

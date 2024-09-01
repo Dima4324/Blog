@@ -24,19 +24,19 @@ const ProfleAligned = styled.div`
   gap: 10px;
 `;
 
-const StyledIcon = styled.button`
-  border: none;
-  background-color: inherit;
-  &:hover {
-    cursor: pointer;
-  }
+const StyledLink = styled(Link)`
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 10px;
 `;
 
 const UserName = styled.p`
-	margin: 0 0 3px 0;
-	font-size: 20px;
-	font-weight: 500;
-`
+  margin: 0 0 3px 0;
+  font-size: 20px;
+  font-weight: 500;
+`;
 
 const ControlPanelContainer = ({ className }) => {
   const navigate = useNavigate();
@@ -47,26 +47,27 @@ const ControlPanelContainer = ({ className }) => {
 
   const dispatch = useDispatch();
 
+  const onLogout = () => {
+	dispatch(logout(session))
+	sessionStorage.removeItem("userData")
+  }
+
   return (
     <div className={className}>
       <ProfleAligned>
         {roleId === ROLE.GUEST ? (
-          <Button>
-            <Link to="/login">Войти</Link>
-          </Button>
+          <StyledLink to="/login">
+            <Button>Войти</Button>
+          </StyledLink>
         ) : (
           <>
             <UserName>{login}</UserName>
-            <StyledIcon onClick={() => dispatch(logout(session))}>
-              <Icon id="fa-sign-out" />
-            </StyledIcon>
+            <Icon id="fa-sign-out" onClick={onLogout} />
           </>
         )}
       </ProfleAligned>
       <RightAligned>
-        <StyledIcon onClick={() => navigate(-1)}>
-          <Icon id="fa-backward" />
-        </StyledIcon>
+        <Icon id="fa-backward" onClick={() => navigate(-1)} />
         <Link to="/post">
           <Icon id="fa-file-text-o" />
         </Link>
