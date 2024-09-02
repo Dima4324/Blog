@@ -24,7 +24,7 @@ export const addPostComment = async (hash, userId, postId, content) => {
 		error: null,
 		res: {
 			...post,
-			...comments
+			comments
 		},
 	}
 }

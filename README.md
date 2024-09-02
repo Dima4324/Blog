@@ -12,10 +12,10 @@
 Статьи (posts): id title image_url content published_at
 Комментарии (comments): id author_id post_id content
 
-Определить схему состояния на BFF.
+Определить схему состояния на BFF:
 сессия текущего пользователя: login password role
 
-Определить схему для Redux Store.
+Определить схему для Redux Store:
 user: id login roleId
 posts: массив post: id title imageUrl publishedAt commentsCount
 post: id title imageUrl content publishedAt

@@ -9,7 +9,7 @@ const UsersContainer = ({ className }) => {
   const [users, setUsers] = useState([]);
   const [roles, setRoles] = useState([]);
   const [errorMessage, setErrorMessage] = useState(null);
-//   const [shouldUpdateUserList, setShouldUpdateUserList] = useState(false);
+  const [shouldUpdateUserList, setShouldUpdateUserList] = useState(false);
 
   const serverRequest = useServerRequest();
 
@@ -26,11 +26,12 @@ const UsersContainer = ({ className }) => {
       setUsers(usersRes.res);
       setRoles(rolesRes.res);
     });
-  }, [serverRequest]);
+  }, [serverRequest, shouldUpdateUserList]);
 
   const onUserRemove = (userId) => {
     serverRequest("removeUser", userId).then(() => {
-      setUsers(users.filter((user) => user.id !== userId));
+      //   setUsers(users.filter((user) => user.id !== userId));
+      setShouldUpdateUserList(!shouldUpdateUserList);
     });
   };
 

@@ -4,8 +4,6 @@ import { sessions } from "../sessions";
 export const register = async (regLogin, regPassword) => {
 	const existedUser = await getUser(regLogin);
 
-	console.log(existedUser)
-
 	if (existedUser) {
 		return {
 			error: "Данный логин уже занят",
