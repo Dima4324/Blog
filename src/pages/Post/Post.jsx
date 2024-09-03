@@ -13,8 +13,6 @@ const PostContainer = ({ className }) => {
   const serverRequest = useServerRequest();
   const post = useSelector(selectPost);
 
-  console.log("postContainer", post.comments)
-
   useEffect(() => {
     dispatch(loadPostAsync(serverRequest, params.id));
   }, [dispatch, serverRequest, params.id]);
