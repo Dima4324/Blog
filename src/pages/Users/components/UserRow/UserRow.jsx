@@ -49,10 +49,10 @@ const UserRowContainer = ({
           id="fa-floppy-o"
           disabled={isSaveButtonDisabled}
           onClick={() => onRoleSave(id, selectedRoleId)}
-        ></Icon>
+        />
       </td>
       <td className="td-icon" onClick={onUserRemove}>
-        <Icon id="fa-trash-o" margin="0 0 0 20px"></Icon>
+        <Icon id="fa-trash-o" margin="0 0 0 20px" />
       </td>
     </TableRow>
   );

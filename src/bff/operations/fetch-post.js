@@ -1,6 +1,4 @@
-import { getPost, getUser, getUsers } from "../api";
-import { getComments } from "../api/get-comments";
-
+import { getUsers, getComments, getPost } from "../api";
 
 export const fetchPost = async (postId) => {
 	const post = await getPost(postId);
@@ -17,7 +15,7 @@ export const fetchPost = async (postId) => {
 			author: user?.login,
 		}
 	})
-	
+
 	return {
 		error: null,
 		res: {

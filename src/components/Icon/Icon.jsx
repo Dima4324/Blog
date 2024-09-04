@@ -16,7 +16,6 @@ export const Icon = styled(IconContainer)`
   background-color: inherit;
 
   &:hover {
-    cursor: pointer;
+    cursor: ${({inactive, disabled}) => inactive || disabled ? "default" : "pointer" };
   }
-
 `;
