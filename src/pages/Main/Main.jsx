@@ -1,18 +1,25 @@
 import { useEffect, useState } from "react";
 import styled from "styled-components";
 import { useServerRequest } from "../../hooks";
-import { PostCard } from "./components";
+import { PAGINATION_LIMIT } from "../../constants";
+import { getLastPagerFromLinks } from "./utils";
+import { Pagination, PostCard } from "./components";
 
 const MainContainer = ({ className }) => {
   const [posts, setPosts] = useState([]);
-
+  const [page, setPage] = useState(1);
+  const [lastPage, setLastPage] = useState(1);
   const serverRequest = useServerRequest();
 
   useEffect(() => {
-    serverRequest("fetchPosts").then((posts) => {
-      setPosts(posts.res);
-    });
-  }, [serverRequest]);
+    serverRequest("fetchPosts", page, PAGINATION_LIMIT).then(
+      ({ res: { posts, links } }) => {
+		console.log(posts)
+        setPosts(posts);
+        setLastPage(getLastPagerFromLinks(links));
+      }
+    );
+  }, [serverRequest, page]);
 
   return (
     <div className={className}>
@@ -28,18 +35,24 @@ const MainContainer = ({ className }) => {
           />
         ))}
       </div>
+      {lastPage > 1 && (
+        <Pagination page={page} lastPage={lastPage} setPage={setPage} />
+      )}
     </div>
   );
 };
 
 export const Main = styled(MainContainer)`
-width: 100%;
-margin: 0 auto;
+  width: 100%;
+  height: 100%;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
 
   & .post-list {
     display: flex;
-	flex-wrap: wrap;
-	gap: 40px;
-	padding: 20px 40px;
+    flex-wrap: wrap;
+    gap: 40px;
+    padding: 20px 40px;
   }
 `;
