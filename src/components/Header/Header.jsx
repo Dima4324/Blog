@@ -2,7 +2,7 @@ import styled from "styled-components";
 import { ControlPanel, Logo } from "./components";
 
 const Description = styled.p`
-	font-style: italic
+  font-style: italic;
 `;
 
 const HeaderContainer = ({ className }) => (
@@ -15,7 +15,7 @@ const HeaderContainer = ({ className }) => (
       <br />
       Разбор ошибок
     </Description>
-	<ControlPanel/>
+    <ControlPanel />
   </header>
 );
 
@@ -30,4 +30,5 @@ export const Header = styled(HeaderContainer)`
   padding: 20px 40px;
   box-shadow: 0px 0px 15px #000;
   background-color: #fff;
+  z-index: 12;
 `;
