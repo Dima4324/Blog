@@ -1,19 +1,28 @@
 import styled from "styled-components";
-import { Content, H2 } from "../../components";
+import { PrivateContent, H2 } from "../../components";
 import { TableRow, UserRow } from "./components";
 import { useServerRequest } from "../../hooks";
 import { useEffect, useState } from "react";
 import { ROLE } from "../../constants";
+import { checkAccess } from "../../utils/check-access";
+import { useSelector } from "react-redux";
+import { selectUserRole } from "../../store/selectors";
 
 const UsersContainer = ({ className }) => {
   const [users, setUsers] = useState([]);
   const [roles, setRoles] = useState([]);
   const [errorMessage, setErrorMessage] = useState(null);
   const [shouldUpdateUserList, setShouldUpdateUserList] = useState(false);
+  const userRole = useSelector(selectUserRole);
 
   const serverRequest = useServerRequest();
 
+
   useEffect(() => {
+	if (!checkAccess([ROLE.ADMIN], userRole)) {
+		return;
+	}
+
     Promise.all([
       serverRequest("fetchUsers"),
       serverRequest("fetchRoles"),
@@ -26,19 +35,22 @@ const UsersContainer = ({ className }) => {
       setUsers(usersRes.res);
       setRoles(rolesRes.res);
     });
-  }, [serverRequest, shouldUpdateUserList]);
+  }, [serverRequest, shouldUpdateUserList, userRole]);
 
   const onUserRemove = (userId) => {
+	if (!checkAccess([ROLE.ADMIN], userRole)) {
+		return;
+	}
+
     serverRequest("removeUser", userId).then(() => {
-      //   setUsers(users.filter((user) => user.id !== userId));
       setShouldUpdateUserList(!shouldUpdateUserList);
     });
   };
 
   return (
     <div className={className}>
-      <Content error={errorMessage}>
-        <H2>Пользователи</H2>
+      <PrivateContent access={[ROLE.ADMIN]} serverError={errorMessage}>
+        <H2 margin="100px 0 0 0">Пользователи</H2>
         <table>
           <thead className="table-header">
             <TableRow>
@@ -61,7 +73,7 @@ const UsersContainer = ({ className }) => {
             ))}
           </tbody>
         </table>
-      </Content>
+      </PrivateContent>
     </div>
   );
 };
