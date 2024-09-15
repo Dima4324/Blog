@@ -1,12 +1,15 @@
 import styled from "styled-components";
 import { Icon } from "../../../../../../components";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import {
   CLOSE_MODAL,
   openModal,
   removeCommentAsync,
 } from "../../../../../../store/actions";
 import { useServerRequest } from "../../../../../../hooks";
+import { selectUserRole } from "../../../../../../store/selectors";
+import { checkAccess } from "../../../../../../utils/check-access";
+import { ROLE } from "../../../../../../constants";
 
 const CommentContainer = ({
   className,
@@ -20,14 +23,17 @@ const CommentContainer = ({
 
   const serverRequest = useServerRequest();
 
+  const roleId = useSelector(selectUserRole);
+  const isAdminOrModerator = checkAccess([ROLE.ADMIN, ROLE.MODERATOR], roleId);
+
   const onCommentRemove = (id) => {
     dispatch(
       openModal({
         text: "Удалить комментарий?",
         onConfirm: () => {
-			dispatch(CLOSE_MODAL)
-			dispatch(removeCommentAsync(serverRequest, postId, id))
-		},
+          dispatch(CLOSE_MODAL);
+          dispatch(removeCommentAsync(serverRequest, postId, id));
+        },
         onCancel: () => dispatch(CLOSE_MODAL),
       })
     );
@@ -38,23 +44,25 @@ const CommentContainer = ({
       <div className="comment">
         <div className="information-panel">
           <div className="author-container">
-            <Icon id="fa-user-circle-o" size="18px" inactive="true"/>
+            <Icon id="fa-user-circle-o" size="18px" inactive="true" />
             <p className="author">{author}</p>
           </div>
           <div className="published-at-container">
-            <Icon id="fa-calendar-o" size="18px" inactive="true"/>
+            <Icon id="fa-calendar-o" size="18px" inactive="true" />
             <p className="published-at">{publishedAt}</p>
           </div>
         </div>
         <div className="comment-text">{content}</div>
       </div>
-      <Icon
-        id="fa-trash-o"
-        className="delete-comment"
-        size="18px"
-        margin="5px 0 0 0"
-        onClick={() => onCommentRemove(id)}
-      />
+      {isAdminOrModerator && (
+        <Icon
+          id="fa-trash-o"
+          className="delete-comment"
+          size="18px"
+          margin="5px 0 0 0"
+          onClick={() => onCommentRemove(id)}
+        />
+      )}
     </div>
   );
 };

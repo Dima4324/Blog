@@ -39,6 +39,7 @@ const PostContainer = ({ className }) => {
     return null;
   }
 
+
   const SpeificPostPage =
     isCreating || isEditing ? (
       <PrivateContent access={[ROLE.ADMIN]} serverError={error}>
@@ -49,7 +50,7 @@ const PostContainer = ({ className }) => {
     ) : (
       <div className={className}>
         <PostContent post={post} />
-        <Comments comments={post.comments} postId={post.id} />
+        <Comments comments={post.comments} postId={post.id}/>
       </div>
     );
 
