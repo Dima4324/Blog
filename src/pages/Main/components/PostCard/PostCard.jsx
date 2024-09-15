@@ -12,7 +12,7 @@ const PostCardContainer = ({
 }) => {
   return (
     <div className={className}>
-      <Link to={`/post/${id}`}>
+      <Link to={`/post/${id}`} className="post-card-link">
         <img src={imageUrl} alt={title} />
         <div className="post-card-footer">
           <h4>{title}</h4>
@@ -38,29 +38,41 @@ export const PostCard = styled(PostCardContainer)`
   flex-direction: column;
   border: 1px solid #000;
 
-  & h4, p {
+  & .post-card-link {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+  }
+
+  & h4,
+  p {
     margin: 0;
   }
 
   & .post-card-footer {
-	border-top: 1px solid #000;
-	padding: 10px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    border-top: 1px solid #000;
+    padding: 10px;
   }
 
   & .post-card-info {
-	display: flex;
-	justify-content: space-between;
-	margin-top: 10px;
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
   }
 
-  & .published-at, .commnts-count {
-	display: flex;
-	gap: 5px;
+  & .published-at,
+  .commnts-count {
+    display: flex;
+    gap: 5px;
   }
 
   & img {
-	display: block;
-	width: 100%;
-	height: 148px;
+    display: block;
+    width: 100%;
+    height: 148px;
   }
 `;

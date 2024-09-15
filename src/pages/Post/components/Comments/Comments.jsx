@@ -4,39 +4,48 @@ import { Icon } from "../../../../components";
 import { Comment } from "./components/Comment/Comment";
 import { useServerRequest } from "../../../../hooks";
 import { useDispatch, useSelector } from "react-redux";
-import { selectUserId } from "../../../../store/selectors";
+import { selectUserId, selectUserRole } from "../../../../store/selectors";
 import { addCommentAsync } from "../../../../store/actions";
+import { ROLE } from "../../../../constants";
 
 const CommentsContainer = ({ className, comments, postId }) => {
   const [newComment, setNewComment] = useState("");
 
-  const userId = useSelector(selectUserId)
+  const userId = useSelector(selectUserId);
+  const userRole = useSelector(selectUserRole);
+  const isGuest = userRole === ROLE.GUEST;
 
   const dispatch = useDispatch();
 
   const serverRequest = useServerRequest();
 
   const onNewCommentAdd = (userId, postId, content) => {
-	dispatch(addCommentAsync(serverRequest, userId, postId, content));
-	setNewComment("");
-  }
+    dispatch(addCommentAsync(serverRequest, userId, postId, content));
+    setNewComment("");
+  };
 
   return (
     <div className={className}>
-      <div className="new-comment">
-        <textarea
-		name="comment"
-          value={newComment}
-          placeholder="комментарий"
-          onChange={({ target }) => setNewComment(target.value)}
-        ></textarea>
-        <Icon id="fa-paper-plane-o" size="18px"  onClick={() => onNewCommentAdd(userId, postId, newComment)}/>
-      </div>
+      {!isGuest && (
+        <div className="new-comment">
+          <textarea
+            name="comment"
+            value={newComment}
+            placeholder="комментарий"
+            onChange={({ target }) => setNewComment(target.value)}
+          ></textarea>
+          <Icon
+            id="fa-paper-plane-o"
+            size="18px"
+            onClick={() => onNewCommentAdd(userId, postId, newComment)}
+          />
+        </div>
+      )}
       <div className="comments">
         {comments.map(({ id, author, content, publishedAt }) => (
           <Comment
             key={id}
-			postId={postId}
+            postId={postId}
             id={id}
             author={author}
             content={content}
@@ -53,21 +62,21 @@ export const Comments = styled(CommentsContainer)`
   margin: 0 auto;
 
   & .new-comment {
-	display: flex;
-	align-items: flex-start;
-	gap: 10px;
-	margin: 50px 0 0;
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    margin: 50px 0 0;
   }
 
   & .new-comment textarea {
-	width: 550px;
-	height: 120px;
-	font-size: 18px;
-	resize: none;
+    width: 550px;
+    height: 120px;
+    font-size: 18px;
+    resize: none;
   }
 
   & .comments {
-	display: flex;
-	flex-direction: column;
+    display: flex;
+    flex-direction: column;
   }
 `;
