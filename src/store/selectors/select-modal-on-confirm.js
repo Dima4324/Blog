@@ -1,0 +1,1 @@
+export const selectModalOnComfirm = ({ app }) => app.modal.onConfirm;
