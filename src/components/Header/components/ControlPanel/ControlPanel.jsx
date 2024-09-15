@@ -62,14 +62,14 @@ const ControlPanelContainer = ({ className }) => {
         ) : (
           <>
             <UserName>{login}</UserName>
-            <Icon id="fa-sign-out" onClick={onLogout} />
+            <Icon id="fa-sign-out"  onClick={onLogout} />
           </>
         )}
       </ProfleAligned>
       <RightAligned>
-        <Icon id="fa-backward" onClick={() => navigate(-1)} />
+        <Icon id="fa-backward"  onClick={() => navigate(-1)} />
         <Link to="/post">
-          <Icon id="fa-file-text-o" />
+          <Icon id="fa-file-text-o"/>
         </Link>
         <Link to="/users">
           <Icon id="fa-users" />
