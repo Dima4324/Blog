@@ -30,6 +30,8 @@ const PostContentContainer = ({
 
 export const PostContent = styled(PostContentContainer)`
   & .post-img {
+    width: 280px;
+    height: 150px;
     float: left;
     margin: 0 20px 10px 0;
   }

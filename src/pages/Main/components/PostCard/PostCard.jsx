@@ -61,5 +61,6 @@ export const PostCard = styled(PostCardContainer)`
   & img {
 	display: block;
 	width: 100%;
+	height: 148px;
   }
 `;
