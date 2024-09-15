@@ -112,6 +112,7 @@ export const Registration = styled(RegistrationContainer)`
   flex-direction: column;
   align-items: center;
   justify-content: center;
+margin-top: 100px;
 
   & > form {
     width: 260px;

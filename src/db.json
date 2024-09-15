@@ -8,11 +8,11 @@
       "role_id": 0
     },
     {
-      "id": "0601",
-      "login": "Dima",
-      "password": "qwerty123",
-      "registered_at": "2050-09-22 03:12",
-      "role_id": 0
+      "login": "asdasd",
+      "password": "123456",
+      "registered_at": "2024-09-09 23:00",
+      "role_id": 2,
+      "id": "y1Kq_mQ"
     }
   ],
   "roles": [
@@ -337,15 +337,15 @@
       }
     },
     {
-      "id": "6e04",
-      "hash": "0.79745912821254893998457191628403961658477783203125",
+      "hash": "0.09570778067689289514419215265661478042602539062500",
       "user": {
-        "id": "001",
-        "login": "Dima",
-        "password": "qwerty123",
-        "registeredAt": "2050-09-22 03:12",
-        "roleId": 0
-      }
+        "login": "asdasd",
+        "password": "123456",
+        "registered_at": "2024-09-09 23:00",
+        "role_id": 2,
+        "id": "y1Kq_mQ"
+      },
+      "id": "wxmzS2E"
     }
   ]
 }
