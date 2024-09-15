@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { H2 } from "../h2/H2";
+import { PROP_TYPE } from "../../constants";
 
 const Div = styled.div`
   margin-top: 100px;
@@ -19,3 +20,7 @@ export const Error = ({ error }) => {
     )
   );
 };
+
+Error.propTypes = {
+	error: PROP_TYPE.ERROR,
+}
