@@ -84,7 +84,7 @@ const AuthorizationContainer = ({ className }) => {
 
   return (
     <div className={className}>
-      <H2>Авторизация</H2>
+      <H2 margin="0 0 25px 0">Авторизация</H2>
       <form onSubmit={handleSubmit(onSubmit)}>
         <Input
           type="text"
@@ -115,7 +115,7 @@ export const Authorization = styled(AuthorizationContainer)`
   align-items: center;
   justify-content: center;
   margin-top: 100px;
-  
+
   & > form {
     width: 260px;
     display: flex;

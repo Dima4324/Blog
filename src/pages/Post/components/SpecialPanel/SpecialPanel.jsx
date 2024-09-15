@@ -1,3 +1,4 @@
+import PropTypes from "prop-types";
 import styled from "styled-components";
 import { Icon } from "../../../../components";
 import { useDispatch, useSelector } from "react-redux";
@@ -86,3 +87,9 @@ export const SpecialPanel = styled(SpecialPanelContainer)`
     font-size: 18px;
   }
 `;
+
+SpecialPanel.propTypes = {
+  id: PropTypes.string.isRequired,
+  publishedAt: PropTypes.string.isRequired,
+  editButton: PropTypes.node.isRequired,
+};

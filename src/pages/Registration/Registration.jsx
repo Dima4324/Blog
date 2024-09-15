@@ -81,7 +81,7 @@ const RegistrationContainer = ({ className }) => {
 
   return (
     <div className={className}>
-      <H2>Регистрация</H2>
+      <H2 margin="0 0 25px 0">Регистрация</H2>
       <form onSubmit={handleSubmit(onSubmit)}>
         <Input
           type="text"
